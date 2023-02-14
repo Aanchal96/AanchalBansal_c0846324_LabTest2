@@ -4,8 +4,8 @@ const apiRoutes = express.Router({mergeParams: true})
 
 apiRoutes.post('/students', (req, res) => {
     const {id, name, program, term} = req.body;
-    connection.query("INSERT INTO `students` (`id`, `name`, `program`, `term`) VALUES (?, ?, ?, ?)",
-        [id, name, program, term],
+    connection.query("INSERT INTO `Students` (`id`, `name`, `program`, `classId`) VALUES (?, ?, ?, ?)",
+        [id, name, program, classId],
         (err, result) => {
         if (err) {
             return res.status(500).send({
@@ -20,7 +20,7 @@ apiRoutes.post('/students', (req, res) => {
 
 apiRoutes.post('/students/delete', (req, res) => {
     const {id} = req.body;
-    connection.query('delete from students where id=?',
+    connection.query('delete from Students where id=?',
         [id],
         (err, result) => {
             if (err) {

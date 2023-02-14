@@ -3,7 +3,7 @@ const connection = require('../config/database');
 const viewRoutes = express.Router({mergeParams: true})
 
 viewRoutes.get('/students', (req, res) => {
-    connection.query("select * from students", (err, result) => {
+    connection.query("select * from Students", (err, result) => {
         if (err) {
             return res.status(500).send({
                 'message' : err.message
